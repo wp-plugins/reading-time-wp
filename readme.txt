@@ -12,7 +12,7 @@ Reading Time WP creates an estimated reading time of your posts that is inserted
 
 == Description ==
 
-WP Reading Time let's you easily add an estimated reading time to your WordPress posts. Activating the plugin will automatically add the reading time to the beginning of your post's content. This can be deactivated in the Reading Time settings which can be accessed from your Dashboard's Settings menu. You can also edit the label and postfix from this menu.
+WP Reading Time let's you easily add an estimated reading time to your WordPress posts. Activating the plugin will automatically add the reading time to the beginning of your post's content. This can be deactivated in the Reading Time settings which can be accessed from your Dashboard's Settings menu. You can also edit the label and postfix from this menu. 
 
 If you'd prefer more control over where you add your reading time you can use the the [rt_reading_time] shortcode to insert the time into a post. This shortcode also excepts values for label and postfix. These are optional. Ex. [rt_reading_time label="Reading Time:" postfix="minutes"].
 
