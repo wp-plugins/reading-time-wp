@@ -1,5 +1,5 @@
 === Reading Time WP ===
-Contributors: yingling017, yingles
+Contributors: yingling017
 Donate link: http://jasonyingling.me
 Tags: reading time, estimated time, word count, time, posts, page, reading
 Requires at least: 3.0.1
