@@ -53,6 +53,9 @@ Just edit the Reading time label and Reading time postfix fields in the Reading 
 
 == Changelog ==
 
+= 1.0.1 =
+* Converting the plugin to a class based structure
+
 = 1.0.0 =
 * Initial release
 
@@ -60,3 +63,6 @@ Just edit the Reading time label and Reading time postfix fields in the Reading 
 
 = 1.0 =
 Initial release
+
+= 1.0.1 =
+This update converts the plugin into a class based structure for better expandability in the future.
