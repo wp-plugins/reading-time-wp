@@ -53,6 +53,9 @@ Just edit the Reading time label and Reading time postfix fields in the Reading 
 
 == Changelog ==
 
+= 1.0.3 =
+* Fixes issue with miscalculating the reading time when using <!--more--> tags and the_content. Also fixes issue with reading time appearing inline when using the_excerpt. 
+
 = 1.0.2 =
 * Fixing bug with more tags in the_content
 
@@ -72,3 +75,6 @@ This update converts the plugin into a class based structure for better expandab
 
 = 1.0.2 =
 Fixes issue with miscalculated reading time when using <!--more--> tags
+
+= 1.0.3 =
+Fixes issue with reading time appearing inline when using the_excerpt. 
