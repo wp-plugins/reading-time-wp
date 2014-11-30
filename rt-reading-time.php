@@ -3,7 +3,7 @@
  * Plugin Name: Reading Time WP
  * Plugin URI: http://jasonyingling.me/reading-time-wp/
  * Description: Add an estimated reading time to your posts.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: Jason Yingling
  * Author URI: http://jasonyingling.me
  * License: GPL2
@@ -28,6 +28,7 @@
 class readingTimeWP {
 	
 	// Add label option using add_option if it does not already exist
+	public $readingTime;
 	
 	public function __construct() {
 		$defaultSettings = array(
@@ -50,6 +51,17 @@ class readingTimeWP {
 		}
 	}
 	
+	public function rt_calculate_reading_time($rtPostID, $rtOptions) {
+		
+		$rtContent = get_post_field('post_content', $rtPostID);
+		$strippedContent = strip_shortcodes($rtContent);
+		$wordCount = str_word_count($strippedContent);
+		$this->readingTime = ceil($wordCount / $rtOptions['wpm']);
+		
+		return $this->readingTime;
+		
+	}
+	
 	public function rt_reading_time($atts, $content = null) {
 	
 		extract (shortcode_atts(array(
@@ -59,14 +71,12 @@ class readingTimeWP {
 			
 		$rtReadingOptions = get_option('rt_reading_time_options');
 		
-		$rtPostID = get_the_ID();
-		$rtContent = get_the_content($rtPostID);
-		$strippedContent = strip_shortcodes($rtContent);
-		$wordCount = str_word_count($strippedContent);
-		$readingTime = ceil($wordCount / $rtReadingOptions['wpm']);
+		$rtPost = get_the_ID();
+		
+		$this->rt_calculate_reading_time($rtPost, $rtReadingOptions);
 		
 		return "
-		<span class='span-reading-time'>$label $readingTime $postfix</span>
+		<span class='span-reading-time'>$label $this->readingTime $postfix</span>
 		";
 	}
 	
@@ -81,18 +91,17 @@ class readingTimeWP {
 	
 	// Calculate reading time by running it through the_content
 	public function rt_add_reading_time_before_content($content) {
-		
 		$rtReadingOptions = get_option('rt_reading_time_options');
-		
+
 		$originalContent = $content;
-		$strippedContent = strip_shortcodes($originalContent);
-		$wordCount = str_word_count($strippedContent);
-		$readingTime = ceil($wordCount / $rtReadingOptions['wpm']);
+		$rtPost = get_the_ID();
 		
+		$this->rt_calculate_reading_time($rtPost, $rtReadingOptions);
+				
 		$label = $rtReadingOptions['label'];
 		$postfix = $rtReadingOptions['postfix'];
 		
-		$content = '<div class="rt-reading-time">'.'<span class="rt-label">'.$label.'</span>'.'<span class="rt-time">'.$readingTime.'</span>'.'<span class="rt-label"> '.$postfix.'</span>'.'</div>';
+		$content = '<div class="rt-reading-time">'.'<span class="rt-label">'.$label.'</span>'.'<span class="rt-time">'.$this->readingTime.'</span>'.'<span class="rt-label"> '.$postfix.'</span>'.'</div>';
 		$content .= $originalContent;
 		return $content;
 	}

@@ -4,7 +4,7 @@ Donate link: http://jasonyingling.me
 Tags: reading time, estimated time, word count, time, posts, page, reading
 Requires at least: 3.0.1
 Tested up to: 4.0
-Stable tag: 1.0.0
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ Just edit the Reading time label and Reading time postfix fields in the Reading 
 
 == Changelog ==
 
+= 1.0.2 =
+* Fixing bug with more tags in the_content
+
 = 1.0.1 =
 * Converting the plugin to a class based structure
 
@@ -66,3 +69,6 @@ Initial release
 
 = 1.0.1 =
 This update converts the plugin into a class based structure for better expandability in the future.
+
+= 1.0.2 =
+Fixes issue with miscalculated reading time when using <!--more--> tags
