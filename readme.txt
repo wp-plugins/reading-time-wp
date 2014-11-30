@@ -4,7 +4,7 @@ Donate link: http://jasonyingling.me
 Tags: reading time, estimated time, word count, time, posts, page, reading
 Requires at least: 3.0.1
 Tested up to: 4.0
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ Just edit the Reading time label and Reading time postfix fields in the Reading 
 
 == Changelog ==
 
+= 1.0.4 =
+* Minor fix to stable version tags, updating readme after fixes in 1.0.2 and 1.0.3
+
 = 1.0.3 =
 * Fixes issue with miscalculating the reading time when using <!--more--> tags and the_content. Also fixes issue with reading time appearing inline when using the_excerpt. 
 
@@ -78,3 +81,6 @@ Fixes issue with miscalculated reading time when using <!--more--> tags
 
 = 1.0.3 =
 Fixes issue with reading time appearing inline when using the_excerpt. 
+
+= 1.0.4 =
+Updating stable version and readme files
