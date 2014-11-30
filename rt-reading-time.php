@@ -3,7 +3,7 @@
  * Plugin Name: Reading Time WP
  * Plugin URI: http://jasonyingling.me/reading-time-wp/
  * Description: Add an estimated reading time to your posts.
- * Version: 1.0.2
+ * Version: 1.0.1
  * Author: Jason Yingling
  * Author URI: http://jasonyingling.me
  * License: GPL2
@@ -47,7 +47,9 @@ class readingTimeWP {
 		if ($rtReadingOptions['before_content'] === 'true') {
 		
 			add_filter('the_content', array($this, 'rt_add_reading_time_before_content'));
-		
+			
+			add_filter('get_the_excerpt', array($this, 'rt_add_reading_time_before_excerpt'));
+			
 		}
 	}
 	
@@ -91,6 +93,26 @@ class readingTimeWP {
 	
 	// Calculate reading time by running it through the_content
 	public function rt_add_reading_time_before_content($content) {
+		$rtReadingOptions = get_option('rt_reading_time_options');
+
+		$originalContent = $content;
+		$rtPost = get_the_ID();
+		
+		$this->rt_calculate_reading_time($rtPost, $rtReadingOptions);
+				
+		$label = $rtReadingOptions['label'];
+		$postfix = $rtReadingOptions['postfix'];
+		
+		if(in_array('get_the_excerpt', $GLOBALS['wp_current_filter'])) { 
+			return $content;
+		}
+		
+		$content = '<div class="rt-reading-time">'.'<span class="rt-label">'.$label.'</span>'.'<span class="rt-time">'.$this->readingTime.'</span>'.'<span class="rt-label"> '.$postfix.'</span>'.'</div>';
+		$content .= $originalContent;
+		return $content;
+	}
+	
+	public function rt_add_reading_time_before_excerpt($content) {
 		$rtReadingOptions = get_option('rt_reading_time_options');
 
 		$originalContent = $content;
