@@ -18,10 +18,6 @@ If you'd prefer more control over where you add your reading time you can use th
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
-
-e.g.
-
 1. Upload the 'rt-reading-time-wp' folder to the '/wp-content/plugins/' directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. That's it! Your reading time will now be inserted at the beginning of every post.
