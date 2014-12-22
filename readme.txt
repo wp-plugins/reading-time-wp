@@ -80,3 +80,4 @@ Fixes issue with reading time appearing inline when using the_excerpt.
 
 = 1.0.4 =
 Updating stable version and readme files
+
